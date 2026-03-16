@@ -1,62 +1,6 @@
-// import { Card } from "@/components/ui/card";
-
-// const Projects = () => {
-//   const projects = [
-//     {
-//       title: "Warranty and Claim Management Platform",
-//       description: "Built using WordPress, PHP, and AWS EC2 with AMI management.",
-//       gradient: "from-blue-500 to-purple-600"
-//     },
-//     {
-//       title: "Dynamic Form Builder Plugin",
-//       description: "Custom WordPress plugin for drag-and-drop form creation and email submission.",
-//       gradient: "from-green-500 to-teal-600"
-//     },
-//     {
-//       title: "LCP (Low Code Platform)",
-//       description: "Next.js applications created to enhance business process automation.",
-//       gradient: "from-orange-500 to-red-600"
-//     }
-//   ];
-
-//   return (
-//     <section id="projects" className="py-20 bg-gray-50">
-//       <div className="container mx-auto px-6">
-//         <div className="text-center mb-16">
-//           <h2 className="text-4xl font-bold text-gray-800 mb-4">Featured Projects</h2>
-//           <div className="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto rounded-full"></div>
-//           <p className="text-gray-600 mt-6 max-w-2xl mx-auto">
-//             A showcase of my recent work and technical achievements
-//           </p>
-//         </div>
-
-//         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-//           {projects.map((project, index) => (
-//             <Card key={index} className="overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-0 shadow-lg">
-//               <div className="relative h-48 overflow-hidden">
-//                 <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-90`}></div>
-//                 <div className="absolute inset-0 flex items-center justify-center">
-//                   <h3 className="text-white text-xl font-bold text-center px-4">{project.title}</h3>
-//                 </div>
-//               </div>
-              
-//               <div className="p-6">
-//                 <p className="text-gray-600 leading-relaxed">{project.description}</p>
-//               </div>
-//             </Card>
-//           ))}
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default Projects;
-
-
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink} from "lucide-react";
  
 const projects = [
   {
@@ -67,8 +11,6 @@ const projects = [
     impactColor: "text-orange-600 bg-orange-50 border-orange-100",
     tags: ["WordPress", "PHP", "AWS EC2", "MySQL", "jQuery"],
     tagColor: "bg-orange-50 text-orange-600",
-    github: "https://github.com/Sirz55",
-    live: "",
   },
   {
     title: "WordPress Form Builder Plugin",
@@ -78,7 +20,6 @@ const projects = [
     impactColor: "text-indigo-600 bg-indigo-50 border-indigo-100",
     tags: ["WordPress", "PHP", "jQuery", "AJAX", "MySQL"],
     tagColor: "bg-indigo-50 text-indigo-600",
-    live: "",
   },
   {
     title: "Low-Code Platform (LCP)",
@@ -88,8 +29,6 @@ const projects = [
     impactColor: "text-green-600 bg-green-50 border-green-100",
     tags: ["Next.js", "React.js", "Node.js", "REST APIs"],
     tagColor: "bg-green-50 text-green-600",
-    
-    live: "",
   },
   {
     title: "Leave Tracker App",
@@ -99,8 +38,6 @@ const projects = [
     impactColor: "text-purple-600 bg-purple-50 border-purple-100",
     tags: ["React.js", "Node.js", "MongoDB", "REST APIs"],
     tagColor: "bg-purple-50 text-purple-600",
-    github: "https://github.com/Sirz55",
-    live: "",
   },
   {
     title: "Personal Portfolio Website",
@@ -159,12 +96,7 @@ const Projects = () => {
  
               {/* Buttons */}
               <div className="flex gap-3 mt-auto">
-                <a href={project.github} target="_blank" rel="noopener noreferrer">
-                  <Button variant="outline" size="sm" className="gap-2 rounded-lg text-xs">
-                    <Github className="w-3 h-3" />
-                    GitHub
-                  </Button>
-                </a>
+                
                 {project.live && (
                   <a href={project.live} target="_blank" rel="noopener noreferrer">
                     <Button size="sm" className="gap-2 rounded-lg text-xs bg-indigo-600 hover:bg-indigo-700 text-white">

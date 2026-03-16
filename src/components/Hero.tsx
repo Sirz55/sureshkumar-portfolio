@@ -157,8 +157,8 @@ const Hero = () => {
  
             {/* Name & Title */}
             <div>
-              <p className="text-gray-400 text-base mb-1 font-medium">Hi there, I'm</p>
-              <h1 className="text-5xl lg:text-6xl font-extrabold text-gray-900 mb-3 leading-tight">
+              <p className="text-gray-500 text-base leading-relaxed max-w-md">Hi there, I'm</p>
+              <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-3 leading-tight">
                 Sureshkumar M<span className="text-indigo-20"></span>
               </h1>
               <div className="flex flex-wrap gap-2">
