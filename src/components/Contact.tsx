@@ -338,7 +338,22 @@ const Contact = () => {
                   </span>
                 ))}
               </div>
-              <p className="text-xs text-indigo-500 mt-3">📍 Pan India · Remote · Hybrid · On-site</p>
+              <div className="flex flex-wrap gap-2 mt-3">
+  {[
+    { label: "Pan India", color: "bg-blue-50 text-blue-600 border-blue-200" },
+    { label: "Remote", color: "bg-green-50 text-green-600 border-green-200" },
+    { label: "Hybrid", color: "bg-purple-50 text-purple-600 border-purple-200" },
+    { label: "On-site", color: "bg-orange-50 text-orange-600 border-orange-200" },
+  ].map((item) => (
+    <span
+      key={item.label}
+      className={`inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full border ${item.color}`}
+    >
+      <span className="w-1.5 h-1.5 rounded-full bg-current opacity-70"></span>
+      {item.label}
+    </span>
+  ))}
+</div>
             </div>
           </div>
 

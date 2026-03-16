@@ -9,7 +9,7 @@ const Services = () => {
       description: "End-to-end web applications using React.js, Next.js, Node.js and Express.js — from UI to backend APIs.",
       tags: ["React.js", "Next.js", "Node.js"],
       gradient: "from-indigo-500 to-blue-500",
-      impact: "5+ apps built"
+      impact: "2+ apps built"
     },
     {
       icon: <Globe className="w-8 h-8" />,

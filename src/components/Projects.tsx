@@ -78,7 +78,6 @@ const projects = [
     impactColor: "text-indigo-600 bg-indigo-50 border-indigo-100",
     tags: ["WordPress", "PHP", "jQuery", "AJAX", "MySQL"],
     tagColor: "bg-indigo-50 text-indigo-600",
-    github: "https://github.com/Sirz55",
     live: "",
   },
   {
@@ -89,7 +88,7 @@ const projects = [
     impactColor: "text-green-600 bg-green-50 border-green-100",
     tags: ["Next.js", "React.js", "Node.js", "REST APIs"],
     tagColor: "bg-green-50 text-green-600",
-    github: "https://github.com/Sirz55",
+    
     live: "",
   },
   {
@@ -111,7 +110,6 @@ const projects = [
     impactColor: "text-blue-600 bg-blue-50 border-blue-100",
     tags: ["React.js", "TypeScript", "Tailwind CSS", "Vite", "Vercel"],
     tagColor: "bg-blue-50 text-blue-600",
-    github: "https://github.com/Sirz55/sureshkumar-portfolio",
     live: "https://sureshkumar-portfolio.vercel.app",
   },
 ];

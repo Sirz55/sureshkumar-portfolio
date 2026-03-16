@@ -125,85 +125,104 @@
 
 
 import { Button } from "@/components/ui/button";
-import { Download, Mail, Linkedin, Github } from "lucide-react";
+import { Download, Mail, Linkedin, Github, MapPin, ArrowRight } from "lucide-react";
  
 const Hero = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center bg-gradient-to-br from-slate-50 via-white to-indigo-50"
+      className="min-h-screen flex items-center bg-gradient-to-br from-slate-50 via-white to-indigo-50 relative overflow-hidden"
     >
-      <div className="container mx-auto px-6 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      {/* Background decoration */}
+      <div className="absolute top-20 right-20 w-72 h-72 bg-indigo-200 rounded-full opacity-20 blur-3xl pointer-events-none"></div>
+      <div className="absolute bottom-20 left-10 w-56 h-56 bg-purple-200 rounded-full opacity-20 blur-3xl pointer-events-none"></div>
  
-          {/* Left Side - Text */}
-          <div className="space-y-6">
+      <div className="container mx-auto px-6 py-16">
+        <div className="grid lg:grid-cols-2 gap-8 items-center">
  
-            {/* Open to Work Badge */}
-            <div className="inline-flex items-center gap-2 bg-green-50 border border-green-200 text-green-700 px-4 py-2 rounded-full text-sm font-medium">
-              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-              Open to Full-Time Roles — Immediate Joiner
+          {/* Left Side */}
+          <div className="space-y-5">
+ 
+            {/* Open to Work + Location */}
+            <div className="flex flex-wrap items-center gap-3">
+              <div className="inline-flex items-center gap-2 bg-green-50 border border-green-200 text-green-700 px-4 py-1.5 rounded-full text-sm font-medium">
+                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                Open to Work — Immediate Joiner
+              </div>
+              <div className="inline-flex items-center gap-1.5 text-gray-500 text-sm">
+                <MapPin className="w-3.5 h-3.5" />
+                Tiruchirappalli, Tamil Nadu
+              </div>
             </div>
  
-            {/* Name */}
+            {/* Name & Title */}
             <div>
-              <p className="text-gray-500 text-lg mb-1">Hi, I'm</p>
-              <h1 className="text-5xl font-bold text-gray-900 mb-2">
-                Sureshkumar M
+              <p className="text-gray-400 text-base mb-1 font-medium">Hi there, I'm</p>
+              <h1 className="text-5xl lg:text-6xl font-extrabold text-gray-900 mb-3 leading-tight">
+                Sureshkumar M<span className="text-indigo-20"></span>
               </h1>
-              <h2 className="text-xl font-medium text-indigo-600">
-                Full Stack Developer | MERN Stack | WordPress | AWS Cloud | Next.js
-              </h2>
-            </div>
- 
-            {/* Impact Metrics */}
-            <div className="flex gap-6">
-              <div>
-                <div className="text-2xl font-bold text-indigo-600">40%</div>
-                <div className="text-xs text-gray-500">Data Entry Reduced</div>
-              </div>
-              <div className="w-px bg-gray-200"></div>
-              <div>
-                <div className="text-2xl font-bold text-purple-600">15%</div>
-                <div className="text-xs text-gray-500">AWS Cost Cut</div>
-              </div>
-              <div className="w-px bg-gray-200"></div>
-              <div>
-                <div className="text-2xl font-bold text-green-600">25%</div>
-                <div className="text-xs text-gray-500">Efficiency Improved</div>
+              <div className="flex flex-wrap gap-2">
+                {["Full Stack Developer", "MERN Stack", "WordPress", "AWS"].map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-xs font-medium bg-indigo-50 text-indigo-600 border border-indigo-100 px-3 py-1 rounded-full"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
             </div>
  
             {/* Tagline */}
-            <p className="text-gray-600 text-lg leading-relaxed max-w-lg">
+            <p className="text-gray-500 text-base leading-relaxed max-w-md">
               Building scalable, production-ready web applications using{" "}
-              <strong>React.js, Next.js, Node.js, WordPress</strong> and{" "}
-              <strong>AWS</strong> — with real measurable impact.
+              <strong className="text-gray-700">React.js, Next.js, Node.js, WordPress</strong>{" "}
+              and <strong className="text-gray-700">AWS</strong> — with real measurable impact.
             </p>
  
+            {/* Impact Metrics */}
+            <div className="flex items-center gap-5 py-3 px-5 bg-white rounded-2xl border border-gray-100 shadow-sm w-fit">
+              <div className="text-center">
+                <div className="text-xl font-bold text-indigo-600">40%</div>
+                <div className="text-xs text-gray-400 mt-0.5">Data Entry ↓</div>
+              </div>
+              <div className="w-px h-8 bg-gray-100"></div>
+              <div className="text-center">
+                <div className="text-xl font-bold text-purple-600">15%</div>
+                <div className="text-xs text-gray-400 mt-0.5">AWS Cost ↓</div>
+              </div>
+              <div className="w-px h-8 bg-gray-100"></div>
+              <div className="text-center">
+                <div className="text-xl font-bold text-green-600">25%</div>
+                <div className="text-xs text-gray-400 mt-0.5">Efficiency ↑</div>
+              </div>
+            </div>
+ 
             {/* Buttons */}
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-3">
               <a href="/Sureshkumar-M-Resume.pdf" download>
-                <Button className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-xl gap-2">
+                <Button className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2.5 rounded-xl gap-2 shadow-md shadow-indigo-200">
                   <Download className="w-4 h-4" />
                   Download Resume
                 </Button>
               </a>
               <a href="#contact">
-                <Button variant="outline" className="px-6 py-3 rounded-xl gap-2 border-indigo-300 text-indigo-600 hover:bg-indigo-50">
-                  <Mail className="w-4 h-4" />
+                <Button variant="outline" className="px-6 py-2.5 rounded-xl gap-2 border-indigo-200 text-indigo-600 hover:bg-indigo-50">
                   Let's Talk
+                  <ArrowRight className="w-4 h-4" />
                 </Button>
               </a>
             </div>
  
             {/* Social Links */}
-            <div className="flex gap-4 pt-2">
+            <div className="flex items-center gap-3 pt-1">
+              <span className="text-xs text-gray-400 font-medium">Find me on</span>
+              <div className="w-8 h-px bg-gray-200"></div>
               <a
                 href="https://linkedin.com/in/sureshkumar-m-77424723a"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:text-indigo-600 hover:border-indigo-300 transition-colors"
+                className="w-9 h-9 rounded-xl border border-gray-200 flex items-center justify-center text-gray-500 hover:text-indigo-600 hover:border-indigo-300 hover:bg-indigo-50 transition-all"
               >
                 <Linkedin className="w-4 h-4" />
               </a>
@@ -211,30 +230,50 @@ const Hero = () => {
                 href="https://github.com/Sirz55"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:text-indigo-600 hover:border-indigo-300 transition-colors"
+                className="w-9 h-9 rounded-xl border border-gray-200 flex items-center justify-center text-gray-500 hover:text-indigo-600 hover:border-indigo-300 hover:bg-indigo-50 transition-all"
               >
                 <Github className="w-4 h-4" />
               </a>
+              <a
+                href="mailto:sureshmurugan919@gmail.com"
+                className="w-9 h-9 rounded-xl border border-gray-200 flex items-center justify-center text-gray-500 hover:text-indigo-600 hover:border-indigo-300 hover:bg-indigo-50 transition-all"
+              >
+                <Mail className="w-4 h-4" />
+              </a>
             </div>
+ 
           </div>
  
           {/* Right Side - Photo */}
           <div className="flex justify-center lg:justify-end">
             <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-br from-indigo-400 to-purple-600 rounded-3xl opacity-20 blur-xl"></div>
-              <div className="absolute -inset-2 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-3xl opacity-30"></div>
-              <div className="relative w-72 h-80 rounded-3xl overflow-hidden border-4 border-white shadow-2xl">
-                <img
-                  src="https://i.postimg.cc/GhFkpVm9/Sureshkumar-Image.jpg" 
-                  alt="Sureshkumar M"
-                  className="w-full h-full object-cover"
-                />
+ 
+              {/* Glow */}
+              <div className="absolute -inset-6 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-3xl opacity-15 blur-2xl"></div>
+ 
+              {/* Photo card */}
+              <div className="relative bg-white rounded-3xl p-2 shadow-2xl border border-gray-100">
+                <div className="w-72 h-80 rounded-2xl overflow-hidden">
+                  <img
+                    src="https://i.postimg.cc/GhFkpVm9/Sureshkumar-Image.jpg"
+                    alt="Sureshkumar M"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+ 
+                {/* Floating name card */}
+               
               </div>
-              <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl shadow-lg px-4 py-3 border border-gray-100">
-                <div className="text-lg font-bold text-indigo-600">1+</div>
-                <div className="text-xs text-gray-500">Years Exp.</div>
+ 
+              {/* Floating exp badge */}
+              <div className="absolute -top-3 -left-3 bg-indigo-600 text-white rounded-2xl shadow-lg px-3 py-2 text-center">
+                <div className="text-lg font-bold">1+</div>
+                <div className="text-xs opacity-80">Yrs Exp</div>
               </div>
-              
+ 
+              {/* Floating cert badge */}
+               
+ 
             </div>
           </div>
  
