@@ -217,7 +217,7 @@ const Contact = () => {
           name="message"
           value={formData.message}
           onChange={handleInputChange}
-          placeholder="Hi Sureshkumar, I'd like to discuss a Full Stack Developer opportunity..."
+          placeholder="Hi I'd like to discuss a opportunity..."
           rows={6}
           className="focus:ring-2 focus:ring-indigo-500 transition-all"
           required

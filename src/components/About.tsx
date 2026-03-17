@@ -30,10 +30,10 @@ const About = () => {
               <p className="text-gray-600 leading-relaxed">
                 Full Stack Developer with{" "}
                 <strong>1+ year of professional experience</strong> at{" "}
-                <strong>NearTekPod, Trichy</strong> — building and deploying
+                <strong>NearTekPod, Tiruchirappalli</strong> — building and deploying
                 production-ready web applications using{" "}
-                <strong>React.js, Next.js, Node.js, WordPress, PHP</strong> and{" "}
-                <strong>AWS</strong>.
+                <strong>React.js, Next.js, Node.js, MongoDB, Express.js, WordPress, PHP</strong> and{" "}
+                <strong>AWS Cloud</strong>.
               </p>
 
               <p className="text-gray-600 leading-relaxed">
@@ -121,7 +121,7 @@ const About = () => {
             <p className="font-medium text-gray-800 text-sm mb-1">Associate Software Engineer</p>
             <p className="text-xs text-gray-500 mb-3">NearTekPod, Tiruchirappalli</p>
             <div className="flex flex-wrap gap-1.5">
-              {["React.js", "Next.js", "Node.js", "WordPress", "AWS", "PHP"].map((tech) => (
+              {["MERN Stack", "Next.js", "WordPress", "PHP", "AWS"].map((tech) => (
                 <span key={tech} className="text-xs bg-indigo-50 text-indigo-600 px-2 py-0.5 rounded-full border border-indigo-100">
                   {tech}
                 </span>

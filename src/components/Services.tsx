@@ -45,7 +45,7 @@ const Services = () => {
     },
     {
       icon: <Database className="w-8 h-8" />,
-      title: "Database Design & Management",
+      title: "Database Management",
       description: "Database architecture, query optimization and management using MongoDB and MySQL for scalable applications.",
       tags: ["MongoDB", "MySQL", "REST"],
       gradient: "from-teal-500 to-blue-500",
