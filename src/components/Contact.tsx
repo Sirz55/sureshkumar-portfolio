@@ -166,74 +166,79 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Contact Form */}
-          <div>
-            <h3 className="text-2xl font-semibold text-gray-800 mb-6">Send Me a Message</h3>
-            <Card className="p-8 shadow-xl border border-gray-100 rounded-2xl">
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
-                    <Input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      placeholder="Your Name"
-                      className="focus:ring-2 focus:ring-indigo-500 transition-all"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                    <Input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      placeholder="your.email@example.com"
-                      className="focus:ring-2 focus:ring-indigo-500 transition-all"
-                      required
-                    />
-                  </div>
-                </div>
+       {/* Contact Form */}
+<div className="lg:sticky lg:top-8">
+  <h3 className="text-2xl font-semibold text-gray-800 mb-6">Send Me a Message</h3>
+  <Card className="p-8 shadow-xl border border-gray-100 rounded-2xl">
+    <form onSubmit={handleSubmit} className="space-y-5">
+      <div className="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
+          <Input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+            placeholder="Your Name"
+            className="focus:ring-2 focus:ring-indigo-500 transition-all"
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+          <Input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            placeholder="your.email@example.com"
+            className="focus:ring-2 focus:ring-indigo-500 transition-all"
+            required
+          />
+        </div>
+      </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Subject</label>
-                  <Input
-                    type="text"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleInputChange}
-                    placeholder="Job Opportunity / Collaboration / Project"
-                    className="focus:ring-2 focus:ring-indigo-500 transition-all"
-                    required
-                  />
-                </div>
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+        <Input
+          type="text"
+          name="subject"
+          value={formData.subject}
+          onChange={handleInputChange}
+          placeholder="Job Opportunity / Collaboration / Project"
+          className="focus:ring-2 focus:ring-indigo-500 transition-all"
+          required
+        />
+      </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                  <Textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    placeholder="Hi Sureshkumar, I'd like to discuss a Full Stack Developer opportunity..."
-                    rows={5}
-                    className="focus:ring-2 focus:ring-indigo-500 transition-all"
-                    required
-                  />
-                </div>
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
+        <Textarea
+          name="message"
+          value={formData.message}
+          onChange={handleInputChange}
+          placeholder="Hi Sureshkumar, I'd like to discuss a Full Stack Developer opportunity..."
+          rows={6}
+          className="focus:ring-2 focus:ring-indigo-500 transition-all"
+          required
+        />
+      </div>
 
-                <Button
-                  type="submit"
-                  disabled={sending}
-                  className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white py-3 rounded-xl transition-all duration-300 text-base font-medium"
-                >
-                  {sending ? "Sending..." : "Send Message"}
-                </Button>
-              </form>
-            </Card>
-          </div>
+      <Button
+        type="submit"
+        disabled={sending}
+        className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white py-3 rounded-xl transition-all duration-300 text-base font-medium"
+      >
+        {sending ? "Sending..." : "Send Message 🚀"}
+      </Button>
+
+      {/* Quick contact note */}
+      <p className="text-xs text-gray-400 text-center">
+        Usually responds within 24 hours · Available for immediate joining
+      </p>
+    </form>
+  </Card>
+</div>
         </div>
       </div>
 
