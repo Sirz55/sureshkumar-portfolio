@@ -77,7 +77,14 @@ const About = () => {
         </div>
 
         {/* 3 cards */}
-        <div className="grid md:grid-cols-3" style={{ gap: "1.5rem" }}>
+     <div
+  style={{
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+    gap: "1.5rem",
+    alignItems: "start",
+  }}
+>
           {[
             {
               icon: <Briefcase size={20} />, title: "Experience", sub: "Feb 2024 – Mar 2025",
