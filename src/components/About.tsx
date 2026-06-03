@@ -17,8 +17,14 @@ const About = () => {
           position: "relative", overflow: "hidden"
         }}>
           <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 1, background: "linear-gradient(90deg,transparent,var(--accent2),transparent)" }} />
-
-          <div className="grid lg:grid-cols-2" style={{ gap: "2.5rem", alignItems: "start" }}>
+<div
+  style={{
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+    gap: "1.5rem",
+    alignItems: "start",
+  }}
+>
             <div>
               <div style={{
                 display: "inline-flex", alignItems: "center", gap: "0.5rem",
@@ -99,17 +105,35 @@ const About = () => {
               </>
             },
             {
-              icon: <GraduationCap size={20} />, title: "Education", sub: "2019 – 2023",
-              content: <>
-                <p style={{ fontWeight: 600, fontSize: "0.9rem", marginBottom: 4 }}>B.E — Electronics & Communication</p>
-                <p style={{ fontSize: "0.8rem", color: "var(--muted)", marginBottom: "0.75rem" }}>K.Ramakrishnan College of Engineering</p>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                  <Trophy size={14} style={{ color: "#f59e0b" }} />
-                  <span style={{ color: "#f59e0b", fontWeight: 600, fontSize: "0.9rem" }}>CGPA: 8.70</span>
-                </div>
-              </>
-            },
-          {
+  icon: <GraduationCap size={20} />,
+  title: "Education",
+  sub: "2019 – 2023",
+  content: (
+    <>
+      <p style={{ fontWeight: 600, fontSize: "0.9rem", marginBottom: 4 }}>
+        B.E — Electronics & Communication
+      </p>
+
+      <p
+        style={{
+          fontSize: "0.8rem",
+          color: "var(--muted)",
+          marginBottom: "0.75rem",
+        }}
+      >
+        K.Ramakrishnan College of Engineering
+      </p>
+
+      <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+        <Trophy size={14} style={{ color: "#f59e0b" }} />
+        <span style={{ color: "#f59e0b", fontWeight: 600, fontSize: "0.9rem" }}>
+          CGPA: 8.70
+        </span>
+      </div>
+    </>
+  ),
+},
+{
   icon: <Trophy size={20} />,
   title: "Certifications",
   sub: "10 Completed",
