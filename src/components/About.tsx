@@ -102,56 +102,68 @@ const About = () => {
                 </div>
               </>
             },
-          { 
-            icon: <Trophy size={20} />,
-title: "Certifications",
-sub: "10 Completed",
-content: (
-<>
-{[
-{ c: "#ef4444", t: "Oracle OCI Foundation" },
-{ c: "#22c55e", t: "MERN Stack — Simplilearn" },
-{ c: "#f97316", t: "AWS Cloud Basics — Simplilearn" },
-{ c: "#a78bfa", t: "PHP Fundamentals — Simplilearn" },
+          {
+  icon: <Trophy size={20} />,
+  title: "Certifications",
+  sub: "10 Completed",
+  content: <>
+    <p style={{ fontWeight: 600, fontSize: "0.9rem", marginBottom: 4 }}>
+      AI, Cloud & Full Stack Certifications
+    </p>
 
-    { c: "#06b6d4", t: "Introduction to Generative AI — Skill India Digital Hub" },
-    { c: "#14b8a6", t: "Agentic AI Executive Micro-Certification — ServiceNow" },
-
-    { c: "#f59e0b", t: "Building with the Claude API — Anthropic" },
-    { c: "#ec4899", t: "AI Fluency Framework & Foundations — Anthropic" },
-    { c: "#8b5cf6", t: "Claude Code in Action — Anthropic" },
-    { c: "#3b82f6", t: "Claude 101 — Anthropic" },
-  ].map((cert) => (
-    <div
-      key={cert.t}
+    <p
       style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "0.5rem",
-        marginBottom: "0.5rem",
+        fontSize: "0.8rem",
+        color: "var(--muted)",
+        marginBottom: "0.75rem",
       }}
     >
-      <span
+      Anthropic, ServiceNow, Skill India & Simplilearn
+    </p>
+
+    {[
+      { c: "#ef4444", t: "Oracle OCI Foundation" },
+      { c: "#22c55e", t: "MERN Stack — Simplilearn" },
+      { c: "#f97316", t: "AWS Cloud Basics — Simplilearn" },
+      { c: "#a78bfa", t: "PHP Fundamentals — Simplilearn" },
+
+      { c: "#06b6d4", t: "Introduction to Generative AI — Skill India" },
+      { c: "#14b8a6", t: "Agentic AI Executive Micro-Certification — ServiceNow" },
+
+      { c: "#f59e0b", t: "Building with the Claude API — Anthropic" },
+      { c: "#ec4899", t: "AI Fluency Framework & Foundations — Anthropic" },
+      { c: "#8b5cf6", t: "Claude Code in Action — Anthropic" },
+      { c: "#3b82f6", t: "Claude 101 — Anthropic" },
+    ].map((cert) => (
+      <div
+        key={cert.t}
         style={{
-          width: 7,
-          height: 7,
-          borderRadius: "50%",
-          background: cert.c,
-          flexShrink: 0,
-        }}
-      />
-      <span
-        style={{
-          fontSize: "0.8rem",
-          color: "var(--muted)",
+          display: "flex",
+          alignItems: "center",
+          gap: "0.5rem",
+          marginBottom: "0.5rem",
         }}
       >
-        {cert.t}
-      </span>
-    </div>
-  ))}
-</>
-            ),
+        <span
+          style={{
+            width: 7,
+            height: 7,
+            borderRadius: "50%",
+            background: cert.c,
+            flexShrink: 0,
+          }}
+        />
+        <span
+          style={{
+            fontSize: "0.8rem",
+            color: "var(--muted)",
+          }}
+        >
+          {cert.t}
+        </span>
+      </div>
+    ))}
+  </>
 }
           ].map((card, i) => (
             <div key={i} style={{
