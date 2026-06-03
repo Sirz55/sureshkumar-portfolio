@@ -1,267 +1,177 @@
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { MapPin, Phone, Mail, Linkedin, Github } from "lucide-react";
 import { useState } from "react";
+import { MapPin, Phone, Mail, Linkedin, Github } from "lucide-react";
 import emailjs from "emailjs-com";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: ""
-  });
-
+  const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
   const [sending, setSending] = useState(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSending(true);
-
-    emailjs
-      .send(
-        "service_7tuq5ce",
-        "template_hwmyu6d",
-        formData,
-        "VCS-NfNG3TQQmkrE-"
-      )
-      .then((response) => {
-        console.log("SUCCESS!", response.status, response.text);
-        alert("✅ Message sent successfully! I'll get back to you soon.");
-        setFormData({ name: "", email: "", subject: "", message: "" });
-        setSending(false);
-      })
-      .catch((err) => {
-        console.error("FAILED...", err);
-        alert("❌ Failed to send message. Please try again.");
-        setSending(false);
-      });
+    emailjs.send("service_7tuq5ce", "template_hwmyu6d", formData, "VCS-NfNG3TQQmkrE-")
+      .then(() => { alert("✅ Message sent!"); setFormData({ name: "", email: "", subject: "", message: "" }); setSending(false); })
+      .catch(() => { alert("❌ Failed. Please try again."); setSending(false); });
   };
 
-  const contactInfo = [
-    {
-      icon: <MapPin className="w-5 h-5" />,
-      title: "Location",
-      details: "Tiruchirappalli, Tamil Nadu, India",
-      gradient: "from-blue-500 to-cyan-500"
-    },
-    {
-      icon: <Phone className="w-5 h-5" />,
-      title: "Phone",
-      details: "+91 9487092075",
-      gradient: "from-green-500 to-emerald-500"
-    },
-    {
-      icon: <Mail className="w-5 h-5" />,
-      title: "Email",
-      details: "sureshmurugan919@gmail.com",
-      gradient: "from-orange-500 to-red-500"
-    },
-    {
-      icon: <Linkedin className="w-5 h-5" />,
-      title: "LinkedIn",
-      details: "linkedin.com/in/sureshkumar-m-77424723a",
-      gradient: "from-blue-600 to-indigo-500",
-      link: "https://linkedin.com/in/sureshkumar-m-77424723a"
-    },
-    {
-      icon: <Github className="w-5 h-5" />,
-      title: "GitHub",
-      details: "github.com/Sirz55",
-      gradient: "from-gray-700 to-gray-900",
-      link: "https://github.com/Sirz55"
-    }
-  ];
+  const inputStyle = {
+    width: "100%", padding: "0.7rem 1rem", borderRadius: 10,
+    background: "var(--bg3)", border: "1px solid var(--border)",
+    color: "var(--text)", fontSize: "0.9rem", outline: "none",
+    transition: "border-color 0.2s", fontFamily: "inherit"
+  };
 
   return (
-    <section id="contact" className="bg-gradient-to-br from-gray-50 via-white to-gray-100 py-20">
-      <div className="container mx-auto px-6">
+    <section id="contact" style={{ padding: "5rem 2rem", borderTop: "1px solid var(--border)" }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+        <p style={{ fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--accent)", marginBottom: "0.75rem" }}>Let's talk</p>
+        <h2 style={{ fontFamily: "Syne, sans-serif", fontWeight: 700, fontSize: "clamp(1.8rem,4vw,2.8rem)", letterSpacing: "-0.02em", marginBottom: "0.75rem" }}>
+          Available for <span style={{ color: "var(--accent)" }}>new roles</span>
+        </h2>
+        <p style={{ color: "var(--muted)", marginBottom: "3rem", maxWidth: 500 }}>
+          Currently open to full-time roles across India. Remote, hybrid, or on-site — let's build something great.
+        </p>
 
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">Get In Touch</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto rounded-full mb-4"></div>
-          <p className="text-gray-600 mt-4 max-w-2xl mx-auto text-lg">
-            I'm currently <strong>open to full-time roles</strong> — feel free to reach out
-            for opportunities, collaborations, or just a chat!
-          </p>
+        <div className="grid lg:grid-cols-2" style={{ gap: "3rem" }}>
 
-          {/* Open to Work Banner */}
-          <div className="inline-flex items-center gap-2 bg-green-50 border border-green-200 text-green-700 px-5 py-2 rounded-full text-sm font-medium mt-4">
-            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-            Available for Full-Time Roles — Immediate Joiner
-          </div>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-12">
-
-          {/* Contact Information */}
-          <div className="space-y-6">
-            <h3 className="text-2xl font-semibold text-gray-800 mb-6">Contact Information</h3>
-            <div className="grid sm:grid-cols-2 gap-4">
-              {contactInfo.map((info, index) => (
-                <Card
-                  key={index}
-                  className="p-5 border border-gray-100 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 rounded-2xl cursor-pointer"
-                  onClick={() => info.link && window.open(info.link, "_blank")}
+          {/* Info */}
+          <div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginBottom: "1.5rem" }}>
+              {[
+                { icon: <MapPin size={16} />, title: "Location", val: "Tiruchirappalli, TN", href: null },
+                { icon: <Phone size={16} />, title: "Phone", val: "+91 9487092075", href: "tel:+919487092075" },
+                { icon: <Mail size={16} />, title: "Email", val: "sureshmurugan919@gmail.com", href: "mailto:sureshmurugan919@gmail.com" },
+                { icon: <Linkedin size={16} />, title: "LinkedIn", val: "sureshkumar-m-77424723a", href: "https://linkedin.com/in/sureshkumar-m-77424723a" },
+                { icon: <Github size={16} />, title: "GitHub", val: "github.com/Sirz55", href: "https://github.com/Sirz55" },
+              ].map((item, i) => (
+                <div key={i}
+                  onClick={() => item.href && window.open(item.href, "_blank")}
+                  style={{
+                    background: "var(--bg2)", border: "1px solid var(--border)",
+                    borderRadius: 14, padding: "1rem", cursor: item.href ? "pointer" : "default",
+                    transition: "border-color 0.2s"
+                  }}
+                  onMouseEnter={e => { if (item.href) e.currentTarget.style.borderColor = "rgba(110,231,183,0.25)"; }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--border)"; }}
                 >
-                  <div className="flex items-center space-x-3">
-                    <div className={`p-2.5 rounded-xl bg-gradient-to-r ${info.gradient} text-white shadow-md flex-shrink-0`}>
-                      {info.icon}
-                    </div>
-                    <div className="min-w-0">
-                      <h4 className="font-semibold text-gray-800 text-sm">{info.title}</h4>
-                      <p className="text-gray-500 text-xs break-words leading-relaxed">{info.details}</p>
-                    </div>
-                  </div>
-                </Card>
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--accent)", marginBottom: "0.4rem" }}>{item.icon}</div>
+                  <div style={{ fontSize: "0.72rem", color: "var(--muted)", marginBottom: "0.2rem", textTransform: "uppercase", letterSpacing: "0.08em" }}>{item.title}</div>
+                  <div style={{ fontSize: "0.8rem", color: "var(--text)", wordBreak: "break-all" }}>{item.val}</div>
+                </div>
               ))}
             </div>
 
-            {/* Preferred Roles */}
-            <div className="bg-indigo-50 rounded-2xl p-5 border border-indigo-100">
-              <h4 className="font-semibold text-indigo-800 mb-3 text-sm">Open To These Roles</h4>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  "Full Stack Developer",
-                  "Data Analyst",
-                  "Prompt Engineer",
-                  "Functional Consultant",
-                  "Business Analyst",
-                  "AI Tools Trainer"
-                ].map((role) => (
-                  <span
-                    key={role}
-                    className="text-xs bg-white text-indigo-600 border border-indigo-200 px-3 py-1.5 rounded-lg font-medium"
-                  >
-                    {role}
-                  </span>
-                ))}
-              </div>
-              <div className="flex flex-wrap gap-2 mt-3">
+            <div style={{ background: "var(--bg2)", border: "1px solid var(--border)", borderRadius: 14, padding: "1.2rem" }}>
+              <p style={{ fontSize: "0.75rem", color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "0.75rem" }}>Open To These Roles</p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem", marginBottom: "0.75rem" }}>
   {[
-    { label: "Pan India", color: "bg-blue-50 text-blue-600 border-blue-200" },
-    { label: "Remote", color: "bg-green-50 text-green-600 border-green-200" },
-    { label: "Hybrid", color: "bg-purple-50 text-purple-600 border-purple-200" },
-    { label: "On-site", color: "bg-orange-50 text-orange-600 border-orange-200" },
-  ].map((item) => (
+    "Full Stack Developer",
+    "Frontend Developer",
+    "Data Analyst",
+    "Prompt Engineer",
+    "Functional Consultant",
+    "Business Analyst"
+  ].map(r => (
     <span
-      key={item.label}
-      className={`inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full border ${item.color}`}
+      key={r}
+      style={{
+        fontSize: "0.75rem",
+        background: "rgba(110,231,183,0.08)",
+        color: "var(--accent)",
+        border: "1px solid rgba(110,231,183,0.15)",
+        padding: "0.25rem 0.6rem",
+        borderRadius: 6
+      }}
     >
-      <span className="w-1.5 h-1.5 rounded-full bg-current opacity-70"></span>
-      {item.label}
+      {r}
     </span>
   ))}
 </div>
+              <div style={{ display: "flex", gap: "0.4rem", flexWrap: "wrap" }}>
+                {[
+                  { l: "Pan India", c: "var(--accent)" },
+                  { l: "Remote", c: "var(--accent2)" },
+                  { l: "Hybrid", c: "var(--accent3)" },
+                  { l: "On-site", c: "#38bdf8" },
+                ].map(x => (
+                  <span key={x.l} style={{ fontSize: "0.75rem", background: `${x.c}15`, color: x.c, border: `1px solid ${x.c}30`, padding: "0.25rem 0.6rem", borderRadius: 100 }}>{x.l}</span>
+                ))}
+              </div>
             </div>
           </div>
 
-       {/* Contact Form */}
-<div className="lg:sticky lg:top-8">
-  <h3 className="text-2xl font-semibold text-gray-800 mb-6">Send Me a Message</h3>
-  <Card className="p-8 shadow-xl border border-gray-100 rounded-2xl">
-    <form onSubmit={handleSubmit} className="space-y-5">
-      <div className="grid sm:grid-cols-2 gap-4">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
-          <Input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleInputChange}
-            placeholder="Your Name"
-            className="focus:ring-2 focus:ring-indigo-500 transition-all"
-            required
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
-          <Input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleInputChange}
-            placeholder="your.email@example.com"
-            className="focus:ring-2 focus:ring-indigo-500 transition-all"
-            required
-          />
-        </div>
-      </div>
-
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">Subject</label>
-        <Input
-          type="text"
-          name="subject"
-          value={formData.subject}
-          onChange={handleInputChange}
-          placeholder="Job Opportunity / Collaboration / Project"
-          className="focus:ring-2 focus:ring-indigo-500 transition-all"
-          required
-        />
-      </div>
-
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
-        <Textarea
-          name="message"
-          value={formData.message}
-          onChange={handleInputChange}
-          placeholder="Hi I'd like to discuss a opportunity..."
-          rows={6}
-          className="focus:ring-2 focus:ring-indigo-500 transition-all"
-          required
-        />
-      </div>
-
-      <Button
-        type="submit"
-        disabled={sending}
-        className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white py-3 rounded-xl transition-all duration-300 text-base font-medium"
-      >
-        {sending ? "Sending..." : "Send Message 🚀"}
-      </Button>
-
-      {/* Quick contact note */}
-      <p className="text-xs text-gray-400 text-center">
-        Usually responds within 24 hours · Available for immediate joining
-      </p>
-    </form>
-  </Card>
-</div>
+          {/* Form */}
+          <div>
+            <div style={{ background: "var(--bg2)", border: "1px solid var(--border)", borderRadius: 20, padding: "2rem", position: "relative", overflow: "hidden" }}>
+              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 1, background: "linear-gradient(90deg,transparent,var(--accent),transparent)" }} />
+              <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+                <div className="grid sm:grid-cols-2" style={{ gap: "1rem" }}>
+                  {["name","email"].map(f => (
+                    <div key={f}>
+                      <label style={{ fontSize: "0.78rem", color: "var(--muted)", textTransform: "capitalize", display: "block", marginBottom: "0.4rem" }}>{f}</label>
+                      <input name={f} type={f === "email" ? "email" : "text"}
+                        value={formData[f as keyof typeof formData]}
+                        onChange={handleChange} required
+                        placeholder={f === "name" ? "Your Name" : "your@email.com"}
+                        style={inputStyle}
+                        onFocus={e => (e.currentTarget.style.borderColor = "rgba(110,231,183,0.4)")}
+                        onBlur={e => (e.currentTarget.style.borderColor = "var(--border)")}
+                      />
+                    </div>
+                  ))}
+                </div>
+                <div>
+                  <label style={{ fontSize: "0.78rem", color: "var(--muted)", display: "block", marginBottom: "0.4rem" }}>Subject</label>
+                  <input name="subject" type="text" value={formData.subject} onChange={handleChange} required
+                    placeholder="Job Opportunity / Collaboration"
+                    style={inputStyle}
+                    onFocus={e => (e.currentTarget.style.borderColor = "rgba(110,231,183,0.4)")}
+                    onBlur={e => (e.currentTarget.style.borderColor = "var(--border)")}
+                  />
+                </div>
+                <div>
+                  <label style={{ fontSize: "0.78rem", color: "var(--muted)", display: "block", marginBottom: "0.4rem" }}>Message</label>
+                  <textarea name="message" rows={5} value={formData.message} onChange={handleChange} required
+                    placeholder="Hi, I'd like to discuss an opportunity..."
+                    style={{ ...inputStyle, resize: "vertical" }}
+                    onFocus={e => (e.currentTarget.style.borderColor = "rgba(110,231,183,0.4)")}
+                    onBlur={e => (e.currentTarget.style.borderColor = "var(--border)")}
+                  />
+                </div>
+                <button type="submit" disabled={sending} style={{
+                  background: "var(--accent)", color: "#0a0a0f",
+                  padding: "0.85rem", borderRadius: 100, border: "none",
+                  fontWeight: 700, fontSize: "0.95rem", cursor: sending ? "not-allowed" : "pointer",
+                  opacity: sending ? 0.7 : 1, transition: "all 0.2s", fontFamily: "Syne, sans-serif"
+                }}>
+                  {sending ? "Sending..." : "Send Message"}
+                </button>
+                <p style={{ fontSize: "0.75rem", color: "var(--muted)", textAlign: "center" }}>Usually responds within 24 hours · Available for immediate joining</p>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Footer */}
-      <div className="container mx-auto px-6 mt-16 pt-8 border-t border-gray-200">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-gray-500">
-            © {new Date().getFullYear()} Sureshkumar M. All rights reserved.
-          </p>
-          <div className="flex gap-3">
-            <a href="https://linkedin.com/in/sureshkumar-m-77424723a" target="_blank" rel="noopener noreferrer"
-              className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center text-gray-500 hover:bg-indigo-100 hover:text-indigo-600 transition-colors">
-              <Linkedin className="w-4 h-4" />
-            </a>
-            <a href="https://github.com/Sirz55" target="_blank" rel="noopener noreferrer"
-              className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center text-gray-500 hover:bg-indigo-100 hover:text-indigo-600 transition-colors">
-              <Github className="w-4 h-4" />
-            </a>
-            <a href="mailto:sureshmurugan919@gmail.com"
-              className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center text-gray-500 hover:bg-indigo-100 hover:text-indigo-600 transition-colors">
-              <Mail className="w-4 h-4" />
-            </a>
-          </div>
+      <div style={{ maxWidth: 1100, margin: "3rem auto 0", paddingTop: "2rem", borderTop: "1px solid var(--border)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
+        <p style={{ fontSize: "0.82rem", color: "var(--muted)" }}>© {new Date().getFullYear()} Sureshkumar M. All rights reserved.</p>
+        <div style={{ display: "flex", gap: "0.5rem" }}>
+          {[
+            { href: "https://linkedin.com/in/sureshkumar-m-77424723a", icon: <Linkedin size={15} /> },
+            { href: "https://github.com/Sirz55", icon: <Github size={15} /> },
+            { href: "mailto:sureshmurugan919@gmail.com", icon: <Mail size={15} /> },
+          ].map((s, i) => (
+            <a key={i} href={s.href} target={s.href.startsWith("http") ? "_blank" : undefined}
+              rel="noopener noreferrer"
+              style={{ width: 32, height: 32, background: "var(--bg2)", border: "1px solid var(--border)", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", color: "var(--muted)", textDecoration: "none", transition: "all 0.2s" }}
+              onMouseEnter={e => { e.currentTarget.style.color = "var(--accent)"; e.currentTarget.style.borderColor = "rgba(110,231,183,0.3)"; }}
+              onMouseLeave={e => { e.currentTarget.style.color = "var(--muted)"; e.currentTarget.style.borderColor = "var(--border)"; }}
+            >{s.icon}</a>
+          ))}
         </div>
       </div>
     </section>

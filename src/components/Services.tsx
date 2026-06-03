@@ -1,120 +1,136 @@
-import { Card } from "@/components/ui/card";
 import { Code, Settings, Star, Briefcase, Zap, Database, Globe } from "lucide-react";
 
-const Services = () => {
-  const services = [
-    {
-      icon: <Code className="w-8 h-8" />,
-      title: "Full Stack Web Development",
-      description: "End-to-end web applications using React.js, Next.js, Node.js and Express.js — from UI to backend APIs.",
-      tags: ["React.js", "Next.js", "Node.js"],
-      gradient: "from-indigo-500 to-blue-500",
-      impact: "2+ apps built"
-    },
-    {
-      icon: <Globe className="w-8 h-8" />,
-      title: "WordPress Plugin Development",
-      description: "Custom WordPress plugins with drag-and-drop forms, AJAX operations, email notifications and admin panel integration.",
-      tags: ["WordPress", "PHP", "jQuery"],
-      gradient: "from-blue-500 to-cyan-500",
-      impact: "40% data entry reduced"
-    },
-    {
-      icon: <Settings className="w-8 h-8" />,
-      title: "AWS Cloud Deployment",
-      description: "Production deployments on AWS EC2 and S3 with automated AMI recycling, cost optimization and performance tuning.",
-      tags: ["AWS EC2", "AWS S3", "OCI"],
-      gradient: "from-orange-500 to-yellow-500",
-      impact: "15% cost reduction"
-    },
-    {
-      icon: <Zap className="w-8 h-8" />,
-      title: "Low-Code Platform Development",
-      description: "Internal business tools and workflow automation platforms using Next.js for streamlined operations.",
-      tags: ["Next.js", "REST APIs", "UI/UX"],
-      gradient: "from-green-500 to-emerald-500",
-      impact: "25% efficiency boost"
-    },
-    {
-      icon: <Briefcase className="w-8 h-8" />,
-      title: "REST API Development",
-      description: "Scalable RESTful APIs with proper authentication, error handling and documentation using Node.js and Express.",
-      tags: ["Node.js", "Express.js", "Postman"],
-      gradient: "from-purple-500 to-pink-500",
-      impact: "Production ready"
-    },
-    {
-      icon: <Database className="w-8 h-8" />,
-      title: "Database Management",
-      description: "Database architecture, query optimization and management using MongoDB and MySQL for scalable applications.",
-      tags: ["MongoDB", "MySQL", "REST"],
-      gradient: "from-teal-500 to-blue-500",
-      impact: "Optimized queries"
-    },
-    {
-      icon: <Star className="w-8 h-8" />,
-      title: "Website Performance Optimization",
-      description: "Speed optimization, lazy loading, code splitting and cloud infrastructure tuning for faster load times.",
-      tags: ["Vite", "AWS", "Next.js"],
-      gradient: "from-red-500 to-orange-500",
-      impact: "Faster load times"
-    },
-  ];
+const services = [
+  {
+    icon: <Code size={22} />,
+    title: "Full Stack Web Development",
+    desc: "End-to-end web applications using React.js, Next.js, Node.js and Express.js — from UI to backend APIs.",
+    tags: ["React.js", "Next.js", "Node.js"],
+    impact: "2+ apps built",
+    color: "var(--accent)",
+  },
+  {
+    icon: <Globe size={22} />,
+    title: "WordPress Plugin Development",
+    desc: "Custom WordPress plugins with drag-and-drop forms, AJAX operations, email notifications and admin panel integration.",
+    tags: ["WordPress", "PHP", "jQuery"],
+    impact: "40% data entry reduced",
+    color: "var(--accent2)",
+  },
+  {
+    icon: <Settings size={22} />,
+    title: "AWS Cloud Deployment",
+    desc: "Production deployments on AWS EC2 and S3 with automated AMI recycling, cost optimization and performance tuning.",
+    tags: ["AWS EC2", "AWS S3", "OCI"],
+    impact: "15% cost reduction",
+    color: "var(--accent3)",
+  },
+  {
+    icon: <Zap size={22} />,
+    title: "Low-Code Platform Development",
+    desc: "Internal business tools and workflow automation platforms using Next.js for streamlined operations.",
+    tags: ["Next.js", "REST APIs", "UI/UX"],
+    impact: "25% efficiency boost",
+    color: "var(--accent)",
+  },
+  {
+    icon: <Briefcase size={22} />,
+    title: "REST API Development",
+    desc: "Scalable RESTful APIs with proper authentication, error handling and documentation using Node.js and Express.",
+    tags: ["Node.js", "Express.js", "Postman"],
+    impact: "Production ready",
+    color: "var(--accent2)",
+  },
+  {
+    icon: <Database size={22} />,
+    title: "Database Management",
+    desc: "Database architecture, query optimization and management using MongoDB and MySQL for scalable applications.",
+    tags: ["MongoDB", "MySQL", "REST"],
+    impact: "Optimized queries",
+    color: "var(--accent3)",
+  },
+  {
+    icon: <Star size={22} />,
+    title: "Performance Optimization",
+    desc: "Speed optimization, lazy loading, code splitting and cloud infrastructure tuning for faster load times.",
+    tags: ["Vite", "AWS", "Next.js"],
+    impact: "Faster load times",
+    color: "var(--accent)",
+  },
+];
 
-  return (
-    <section id="expertise" className="py-20 bg-gradient-to-br from-white to-gray-50">
-      <div className="container mx-auto px-6">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">My Expertise</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto rounded-full mb-4"></div>
-          <p className="text-gray-500 text-lg">What I build and deliver professionally</p>
-        </div>
+const Services = () => (
+  <section id="expertise" style={{ padding: "5rem 2rem", borderTop: "1px solid var(--border)" }}>
+    <div style={{ maxWidth: 1100, margin: "0 auto" }}>
 
-        {/* Cards Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
-            <Card
-              key={index}
-              className="p-6 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 bg-white group rounded-2xl flex flex-col"
-            >
-              {/* Icon + Impact */}
-              <div className="flex items-start justify-between mb-4">
-                <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${service.gradient} text-white group-hover:scale-110 transition-transform duration-300`}>
-                  {service.icon}
-                </div>
-                <span className="text-xs font-medium text-indigo-600 bg-indigo-50 px-2 py-1 rounded-lg border border-indigo-100">
-                  {service.impact}
-                </span>
+      <p style={{ fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--accent)", marginBottom: "0.75rem" }}>Expertise</p>
+      <h2 style={{ fontFamily: "Syne, sans-serif", fontWeight: 700, fontSize: "clamp(1.8rem,4vw,2.8rem)", letterSpacing: "-0.02em", marginBottom: "0.75rem" }}>
+        What I <span style={{ color: "var(--muted)" }}>deliver</span>
+      </h2>
+      <p style={{ color: "var(--muted)", marginBottom: "3rem", fontSize: "0.95rem" }}>
+        Services I build and deliver professionally
+      </p>
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-3" style={{ gap: "1.5rem" }}>
+        {services.map((s, i) => (
+          <div key={i}
+            style={{
+              background: "var(--bg2)", border: "1px solid var(--border)",
+              borderRadius: 16, padding: "1.8rem", display: "flex",
+              flexDirection: "column", transition: "all 0.25s"
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.borderColor = `${s.color}40`;
+              e.currentTarget.style.transform = "translateY(-4px)";
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.borderColor = "var(--border)";
+              e.currentTarget.style.transform = "translateY(0)";
+            }}
+          >
+            {/* Icon + Impact */}
+            <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: "1.2rem" }}>
+              <div style={{
+                background: `${s.color}15`, border: `1px solid ${s.color}30`,
+                borderRadius: 12, padding: "0.6rem", color: s.color
+              }}>
+                {s.icon}
               </div>
+              <span style={{
+                fontSize: "0.72rem", fontWeight: 600,
+                background: `${s.color}10`, color: s.color,
+                border: `1px solid ${s.color}25`,
+                padding: "0.25rem 0.6rem", borderRadius: 6
+              }}>
+                {s.impact}
+              </span>
+            </div>
 
-              {/* Title */}
-              <h3 className="text-lg font-bold text-gray-800 mb-2 leading-tight">
-                {service.title}
-              </h3>
+            {/* Title */}
+            <h3 style={{ fontFamily: "Syne, sans-serif", fontWeight: 700, fontSize: "0.95rem", marginBottom: "0.6rem" }}>
+              {s.title}
+            </h3>
 
-              {/* Description */}
-              <p className="text-gray-500 text-sm leading-relaxed mb-4 flex-1">
-                {service.description}
-              </p>
+            {/* Desc */}
+            <p style={{ fontSize: "0.83rem", color: "var(--muted)", lineHeight: 1.65, marginBottom: "1.2rem", flex: 1 }}>
+              {s.desc}
+            </p>
 
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2 mt-auto">
-                {service.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-xs bg-gray-50 text-gray-600 border border-gray-200 px-2 py-1 rounded-md font-medium"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </Card>
-          ))}
-        </div>
+            {/* Tags */}
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
+              {s.tags.map(t => (
+                <span key={t} style={{
+                  fontSize: "0.72rem", padding: "0.25rem 0.6rem", borderRadius: 6,
+                  background: "var(--bg3)", color: "var(--muted)",
+                  border: "1px solid var(--border)"
+                }}>{t}</span>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Services;
